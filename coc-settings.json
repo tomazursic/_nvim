@@ -1,0 +1,41 @@
+{
+  // Python
+  // https://github.com/neoclide/coc-python
+  // debug :CocCommand python.viewOutput
+  // jedi disabel and make use of MPLS
+  "python.jediEnabled": false,
+  "python.venvPath": "~/.virtualenvs",
+  "python.venvFolders": ["envs",".pyenv","env"],
+  // Python code formater
+  // python3 -m pip install black
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.local/bin/black",
+  "python.linting.pylintEnabled": false,
+  // Python linting
+  // python3 -m pip install flake8
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "~/.local/bin/flake8",
+  "python.linting.flake8Args": ["--ignore=E501,W601,W391"],
+  // Python sort imports
+  // python3 -m pip install isort
+  //"python.sortImports.path": "~/.local/bin/isort",
+  // Install location for - apt install isort
+  "python.sortImports.path": "/usr/bin/isort",
+
+  // GO lang
+  "languageserver": {
+    // go get -u golang.org/x/tools/gopls
+    // Change path to match gopls bin location
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+
+  // JS
+  //"suggest.echodocSupport": true,
+  //"suggest.maxCompleteItemCount": 20,
+  //"eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+
+}
