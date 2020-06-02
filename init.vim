@@ -924,6 +924,14 @@ nmap _ :NERDTreeFind<CR>
 " ================ "
 " === Vim-Test === "
 " ================ "
+" Load test runners
+let test#enabled_runners = [
+            \"python#pyunit",
+            \ "python#pytest",
+            \ "python#djangotest",
+            \ "go#gotest",
+            \ "rust#cargotest"
+            \]
 nmap <silent><leader>tn :TestNearest<CR>
 nmap <silent><leader>tf :TestFile<CR>
 nmap <silent><leader>ts :TestSuite<CR>
