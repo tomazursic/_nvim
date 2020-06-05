@@ -255,11 +255,11 @@ command! -nargs=1 Spaces execute "setlocal shiftwidth=" . <args> . " softtabstop
 command! -nargs=1 Tabs   execute "setlocal shiftwidth=" . <args> . " softtabstop=" . <args> . " noexpandtab" | set shiftwidth? softtabstop? expandtab?
 
 " Remove trailing white space, see https://vi.stackexchange.com/a/456/15292
-function! StripTrailingWhitespaces() abort
-    let l:save = winsaveview()
-    keeppatterns %s/\v\s+$//e
-    call winrestview(l:save)
-endfunction
+" function! StripTrailingWhitespaces() abort
+"     let l:save = winsaveview()
+"     keeppatterns %s/\v\s+$//e
+"     call winrestview(l:save)
+" endfunction
 
 " Custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
 function! VimFolds(lnum)
@@ -433,7 +433,8 @@ nnoremap <silent><C-L> :nohlsearch<CR>
 
 " Remove trailing whitespace characters
 " nmap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <silent> <leader>S :call StripTrailingWhitespaces()<CR>
+" nnoremap <silent> <leader>S :call StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>S :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 " Remove windows' end of line
 nmap <leader>mm :%s/^M$//g<CR>
@@ -926,17 +927,42 @@ nmap _ :NERDTreeFind<CR>
 " ================ "
 " Load test runners
 let test#enabled_runners = [
-            \"python#pyunit",
+            \ "python#pyunit",
             \ "python#pytest",
             \ "python#djangotest",
             \ "go#gotest",
             \ "rust#cargotest"
             \]
+
 nmap <silent><leader>tn :TestNearest<CR>
 nmap <silent><leader>tf :TestFile<CR>
 nmap <silent><leader>ts :TestSuite<CR>
 nmap <silent><leader>tl :TestLast<CR>
 nmap <silent><leader>tv :TestVisit<CR>
+nmap <leader>tt :call ToggleTestOnSave()<CR>
+
+" Toogle auto run tests on file save
+function! ToggleTestOnSave()
+    if !exists('#TestOnSaveGroup#BufWrite')
+        augroup TestOnSaveGroup
+            autocmd!
+            autocmd BufWrite * if test#exists() |
+                        \   TestFile |
+                        \ endif
+        augroup END
+    else
+        augroup TestOnSaveGroup
+            autocmd!
+        augroup END
+    endif
+endfunction
+
+" If you want to scroll through the test command output, you'll have to first
+" switch to normal mode. Remap to CTRL-o for the built-in mapping for exiting
+" terminal insert mode is CTRL-\ CTRL-n
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
 
 " ==================== "
 " === Git Fugitive === "
