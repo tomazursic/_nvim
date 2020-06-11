@@ -832,6 +832,9 @@ nmap <leader>1 :Format<CR>
 " https://github.com/neoclide/coc-python/issues/55
 nmap <leader>2 :CocCommand python.setInterpreter<CR>
 
+" Select python linter
+nmap <leader>3 :CocCommand python.setLinter<CR>
+
 " Handle filetype for jinja
 let g:coc_filetype_map = {
       \ 'htmldjango': 'html',
