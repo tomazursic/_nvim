@@ -990,5 +990,9 @@ nnoremap <leader>gw :Gwrite<CR><CR>
 " === EMMET === "
 " ============= "
 " Default trigger with CTRL + y
+"}
 
+"{ ABBREVIATIONS/SNIPPETS
+" Oh give me a brake insert me the right interpreter
+iabbrev !p #!/usr/bin/env python
 "}
