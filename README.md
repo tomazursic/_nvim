@@ -95,30 +95,30 @@ Check out `plugins.vim` file for more details
 
 ## Language server extensions for coc.nvim
 
-### Python extension
+### Python
 
 https://github.com/neoclide/coc-python
 
     coc-python
 
-### Rust extension
+### Rust analyzer
 
-    coc-rls
+    coc-rust-analyzer
 
-https://github.com/neoclide/coc-rls
+https://github.com/fannheyward/coc-rust-analyzer
 
-### Go extensions
+### Go 
 
     coc-go
 
 https://github.com/josa42/coc-go
 
 
-### Json extension
+### Json 
 
     coc-json
 
-### Emmet extension
+### Emmet 
 
 https://github.com/neoclide/coc-emmet
 

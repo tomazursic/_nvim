@@ -5,7 +5,7 @@
   // jedi disabel and make use of MPLS
   "python.jediEnabled": false,
   "python.venvPath": "~/.virtualenvs",
-  "python.venvFolders": ["envs",".pyenv","env"],
+  "python.venvFolders": ["envs", ".pyenv", "env"],
   // Python code formater
   // python3 -m pip install black
   "python.formatting.provider": "black",
@@ -31,11 +31,14 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  }
+  },
+  // YAML
+  "yaml.completion": "enable",
+  "yaml.format.enable": "enable",
+  "yaml.validate": "enable"
 
   // JS
   //"suggest.echodocSupport": true,
   //"suggest.maxCompleteItemCount": 20,
   //"eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
-
 }

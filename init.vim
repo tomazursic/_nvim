@@ -790,12 +790,13 @@ nmap <leader>- :<c-u>ProjectFiles<CR>
 " list of the extensions required
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 let g:coc_global_extensions = [
+            \'coc-rust-analyzer',
             \'coc-prettier',
             \'coc-python',
             \'coc-emmet',
-            \'coc-rls',
-            \'coc-go',
-            \'coc-git'
+            \'coc-yaml',
+            \'coc-git',
+            \'coc-go'
             \]
 
 " Close preview window when completion is done.
