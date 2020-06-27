@@ -11,7 +11,7 @@
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
   "python.linting.pylintEnabled": false,
-  // Python linting
+  // Python linting with flake8
   // python3 -m pip install flake8
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.local/bin/flake8",
@@ -21,6 +21,9 @@
   //"python.sortImports.path": "~/.local/bin/isort",
   // Install location for - apt install isort
   "python.sortImports.path": "/usr/bin/isort",
+  // Python linting with mypy
+  // python3 -m pip install mypy
+  "python.linting.mypyPath": "~/.local/bin/mypy",
 
   // GO lang
   "languageserver": {
@@ -32,10 +35,20 @@
       "filetypes": ["go"]
     }
   },
+  // Rust analyzer
+  // "rust-analyzer.updates.channel": "nightly",
+  //"rust-analyzer.diagnostics.enable": true,
+  //"rust-analyzer.inlayHints.chainingHints": true,
+  //"rust-analyzer.inlayHints.typeHints": true,
+  //"rust-analyzer.inlayHints.parameterHints": true,
+
+  // Snippets
+  "snippets.ultisnips.enable": false,
+  "snippets.snipmate.enable": false,
   // YAML
-  "yaml.completion": "enable",
-  "yaml.format.enable": "enable",
-  "yaml.validate": "enable"
+  // "yaml.completion": "enable",
+  // "yaml.format.enable": "enable",
+  // "yaml.validate": "enable",
 
   // JS
   //"suggest.echodocSupport": true,

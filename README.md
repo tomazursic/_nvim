@@ -101,6 +101,12 @@ https://github.com/neoclide/coc-python
 
     coc-python
 
+### Rust
+
+    coc-rls
+
+https://github.com/neoclide/coc-rls
+
 ### Rust analyzer
 
     coc-rust-analyzer
@@ -117,6 +123,10 @@ https://github.com/josa42/coc-go
 ### Json 
 
     coc-json
+
+### Yaml
+
+    coc-yaml
 
 ### Emmet 
 

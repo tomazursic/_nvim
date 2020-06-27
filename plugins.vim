@@ -72,6 +72,9 @@ Plug 'fatih/vim-go'
 " === Testing Plugins === "
 Plug 'vim-test/vim-test'
 
+" TOML syntax support
+Plug 'cespare/vim-toml'
+
 " --- Disabled Plugins --- "
 
 " Quoting & parenthesizing

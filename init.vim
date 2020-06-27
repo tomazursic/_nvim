@@ -41,6 +41,10 @@ runtime! ftplugin/man.vim
 source ~/.config/nvim/plugins.vim
 "}
 
+"{ INCLUDES
+runtime! include/lang.vim
+"}
+
 "{ BUILTIN OPTIONS AND SE TTINGS
 if !has('nvim')
     " Change cursor shapes based on whether we are in insert mode,
@@ -567,9 +571,9 @@ inoremap (<cr> (<cr>)<c-o><s-o>
 nnoremap <leader>bb a{{  }}<Left><Left><Left>
 inoremap <leader>bb {{  }}<Left><Left><Left>
 
-" comma then r, writes your current file, and runs python3 <name of file>, hit
+" comma then r, writes your current file, and runs python <name of file>, hit
 " enter again after script completes to drop back into vim
-nnoremap <leader>r :w<CR>:! python3 %<CR>
+nnoremap <leader>r :w<CR>:! python %<CR>
 
 " Insert below cursor the python debugger
 nnoremap <leader>pd oimport pdb; pdb.set_trace()<Esc>
@@ -789,12 +793,13 @@ nmap <leader>- :<c-u>ProjectFiles<CR>
 " ================ "
 " list of the extensions required
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+" \'coc-rust-analyzer', -- deactivated
 let g:coc_global_extensions = [
-            \'coc-rust-analyzer',
             \'coc-prettier',
             \'coc-python',
             \'coc-emmet',
             \'coc-yaml',
+            \'coc-json',
             \'coc-git',
             \'coc-go'
             \]
@@ -827,6 +832,7 @@ inoremap <silent><expr> <TAB>
 
 " coc-python (https://github.com/neoclide/coc-python)
 " cmap ww noa w <CR>
+" :CocAction('format')
 nmap <leader>1 :Format<CR>
 
 " Use command to change python interpreter
@@ -841,7 +847,7 @@ let g:coc_filetype_map = {
       \ 'htmldjango': 'html',
       \ }
 
-" == COC FUNCTIONS ==
+" == Coc FUNCTIONS ==
 
 " Manual format command - don't format code on save
 " Set auto format in coc-settings.json "coc.preferences.formatOnSaveFiletypes": ["python", "rust", "javascript", "typescript", "typescriptreact", "json", "javascriptreact"],
@@ -864,7 +870,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" == COC Go ==
+" == Coc Go ==
 " vim +GoInstallBinaries
 " ls -la $GOBIN
 
@@ -875,6 +881,16 @@ let g:go_def_mapping_enabled = 0
 
 " Auto insert missing imports on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" == Coc Snippets ==
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " ================ "
 " === AIRLINE ==== "
@@ -944,6 +960,8 @@ nmap <silent><leader>ts :TestSuite<CR>
 nmap <silent><leader>tl :TestLast<CR>
 nmap <silent><leader>tv :TestVisit<CR>
 nmap <leader>tt :call ToggleTestOnSave()<CR>
+
+let test#strategy = "neovim"
 
 " Toogle auto run tests on file save
 function! ToggleTestOnSave()
