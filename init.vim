@@ -793,8 +793,8 @@ nmap <leader>- :<c-u>ProjectFiles<CR>
 " ================ "
 " list of the extensions required
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-" \'coc-rust-analyzer', -- deactivated
 let g:coc_global_extensions = [
+            \'coc-rust-analyzer',
             \'coc-prettier',
             \'coc-python',
             \'coc-emmet',

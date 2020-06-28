@@ -36,19 +36,11 @@
     }
   },
   // Rust analyzer
-  // "rust-analyzer.updates.channel": "nightly",
-  //"rust-analyzer.diagnostics.enable": true,
-  //"rust-analyzer.inlayHints.chainingHints": true,
-  //"rust-analyzer.inlayHints.typeHints": true,
-  //"rust-analyzer.inlayHints.parameterHints": true,
+  "rust-analyzer.updates.channel": "nightly",
 
   // Snippets
   "snippets.ultisnips.enable": false,
   "snippets.snipmate.enable": false,
-  // YAML
-  // "yaml.completion": "enable",
-  // "yaml.format.enable": "enable",
-  // "yaml.validate": "enable",
 
   // JS
   //"suggest.echodocSupport": true,
