@@ -42,7 +42,7 @@ source ~/.config/nvim/plugins.vim
 "}
 
 "{ INCLUDES
-runtime! include/lang.vim
+" runtime! include/lang.vim
 "}
 
 "{ BUILTIN OPTIONS AND SE TTINGS
@@ -707,9 +707,20 @@ nmap <leader>/ :History/<CR>
 " Help finder
 nmap <leader>H :Helptags!<CR>
 
+" Search inside project recursively the word under cursor (,ff)
+nnoremap <silent><leader>ff :Find <C-R>=expand("<cword>")<CR><CR>
+
+" Search files inside git project
+" h fzf-vim-commands (GitFiles) support this
+" function! s:find_git_root()
+"   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+" endfunction
+" command! ProjectFiles execute 'Files' s:find_git_root()
+" nmap <leader>fp :<c-u>ProjectFiles<CR>
+
 " h fzf-vim-commands (Buffers) support this
 " Bind to leader + <Enter> the buffer list
-nmap <silent> <Leader><Enter> :call fzf#run({
+nmap <silent> <leader><Enter> :call fzf#run({
 \   'source':  reverse(<sid>buflist()),
 \   'sink':    function('<sid>bufopen'),
 \   'options': '+m',
@@ -779,14 +790,6 @@ endfunction
 function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
-
-" Search files inside git project
-" h fzf-vim-commands (GitFiles) support this
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
-nmap <leader>- :<c-u>ProjectFiles<CR>
 
 " ================ "
 " === Coc.nvim === "
