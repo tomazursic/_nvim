@@ -685,10 +685,6 @@ let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 if executable('rg')
   " Include gitignored files
   let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore-vcs --hidden --follow --glob "!.git/*"'
-
-  " Not include gitignored files:
-  " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-
   set grepprg=rg\ --vimgrep
 endif
 
@@ -709,14 +705,6 @@ nmap <leader>H :Helptags!<CR>
 
 " Search inside project recursively the word under cursor (,ff)
 nnoremap <silent><leader>ff :Find <C-R>=expand("<cword>")<CR><CR>
-
-" Search files inside git project
-" h fzf-vim-commands (GitFiles) support this
-" function! s:find_git_root()
-"   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-" endfunction
-" command! ProjectFiles execute 'Files' s:find_git_root()
-" nmap <leader>fp :<c-u>ProjectFiles<CR>
 
 " h fzf-vim-commands (Buffers) support this
 " Bind to leader + <Enter> the buffer list
