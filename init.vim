@@ -424,11 +424,11 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " Tabs setup
-map <leader>T :tabnew<cr>
-map <leader>To :tabonly<cr>
-map <leader>Tc :tabclose<cr>
-map <A-m> :tabn<cr>
-map <A-n> :tabp<cr>
+map <leader>T :tabnew<CR>
+map <leader>To :tabonly<CR>
+map <leader>Tc :tabclose<CR>
+map <A-m> :tabn<CR>
+map <A-n> :tabp<CR>
 
 " Clear search matches highlight on CTRL-l (line 30 not working correctly)
 nnoremap <silent><C-L> :nohlsearch<CR>
@@ -563,9 +563,9 @@ inoremap {<tab> {}<left>
 inoremap <<tab> <><left>
 
 " Create block and auto close brackets with pressing Enter
-inoremap {<cr> {<cr>}<c-o><s-o>
-inoremap [<cr> [<cr>]<c-o><s-o>
-inoremap (<cr> (<cr>)<c-o><s-o>
+inoremap {<CR> {<CR>}<c-o><s-o>
+inoremap [<CR> [<CR>]<c-o><s-o>
+inoremap (<CR> (<CR>)<c-o><s-o>
 
 " Create jinja variable by hitting ,d
 nnoremap <leader>bb a{{  }}<Left><Left><Left>
@@ -667,10 +667,21 @@ function! MonochroMe()
 endfunction
 
 " Switch to minimal eye candy
-map <silent> <leader>mo :call MonochroMe()<cr>
+map <silent> <leader>mo :call MonochroMe()<CR>
 
-" Toggle dark/white background with ,bg
-map <leader>bg :let &background = ( &background == "dark"? "light" : "dark"  )<CR>
+function! DayNight()
+    if (&background == "dark")
+        set background=light
+        let $BAT_THEME = 'Monokai Extended Light'
+    else
+        set background=dark
+        let $BAT_THEME = 'Monokai Extended'
+    endif
+endfunction
+
+" Toggle dark/white colorscheme with ,bg
+" map <leader>bg :let &background = ( &background == "dark"? "light" : "dark"  )<CR>
+map <leader>bg :call DayNight()<CR>
 "}
 
 "{ PLUGINS
@@ -692,7 +703,7 @@ endif
 tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
 " Find files
-nmap <leader>f :Files<Cr>
+nmap <leader>f :Files<CR>
 " Find inside files content
 nmap <leader>F :Find<space>
 " Find files inside git project
