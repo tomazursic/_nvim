@@ -41,10 +41,6 @@ runtime! ftplugin/man.vim
 source ~/.config/nvim/plugins.vim
 "}
 
-"{ INCLUDES
-" runtime! include/lang.vim
-"}
-
 "{ BUILTIN OPTIONS AND SE TTINGS
 if !has('nvim')
     " Change cursor shapes based on whether we are in insert mode,
