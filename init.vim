@@ -90,7 +90,7 @@ set expandtab       " expand tab to spaces so that tabs are spaces
 " Set matching pairs of characters and highlight matching brackets
 set matchpairs+=<:>,「:」
 
-" Show line number and relative line number
+" Show line numbers
 set number
 
 " File and script encoding settings for vim
@@ -120,6 +120,8 @@ set scrolloff=3
 
 " Set a ruler at column 80, see https://goo.gl/vEkF5i
 " set colorcolumn=80
+nnoremap <silent> <leader>c :execute "set colorcolumn="
+                  \ . (&colorcolumn == "" ? "80" : "")<CR>
 
 " Do not show mode on command line since vim-airline can show it
 set noshowmode
@@ -500,7 +502,7 @@ xnoremap < <gv
 xnoremap > >gv
 
 " Brings up configuration with ,ev
-map <leader>ev :e $HOME/.config/nvim/init.vim<CR>
+map <leader>ev :tabnew $HOME/.config/nvim/init.vim<CR>
 " Reload configuration ,sv
 map <silent><leader>sv :source $HOME/.config/nvim/init.vim <CR> :echo 'Reloaded init.vim!'<CR>
 
@@ -580,6 +582,11 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Fold text mappings
 nnoremap <space> za
 vnoremap <space> zf
+
+" Toilet
+nmap <leader>8 :.!toilet -w 200 -f standard<CR>
+nmap <leader>9 :.!toilet -w 200 -f small<CR>
+nmap <leader>0 :.!toilet -w 200 -f term -F border<CR>
 "}
 
 "{ CLIPBOARD
@@ -588,7 +595,8 @@ vnoremap <space> zf
 " <leader>y to get only visual selection in clipboard
 " paste it with <SHIFT>Insert
 vmap <leader>y "+y
-nmap <leader>Y "*Y
+nmap <leader>y "+yy
+" nmap <leader>Y "*Y
 vmap <leader>d "+d
 nmap <leader>p "+p
 nmap <leader>P "+P
@@ -605,8 +613,8 @@ set pastetoggle=<leader>x
 nmap <leader>, <C-^>
 
 " To move between buffers
-nmap <leader>n :bnext<CR>
-nmap <leader>m :bprevious<CR>
+nmap <leader>n :silent bnext<CR>
+nmap <leader>m :silent bprevious<CR>
 
 " new buffer from text
 map gf :e <cfile><CR>
@@ -614,12 +622,9 @@ map gf :e <cfile><CR>
 " Delete current buffer
 nmap <leader>q :bd<CR>
 
-" Quit all opened buffers
-nnoremap <silent> <leader>Q :qa<CR>
-
 " Close a buffer and switching to another buffer, do not close the
 " window, see https://goo.gl/Wd8yZJ
-nnoremap <leader>ql :bprevious <bar> bdelete #<CR>
+nnoremap <leader>Q :bprevious <bar> bdelete #<CR>
 
 " Scratch buffer :SC
 command! SC vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile

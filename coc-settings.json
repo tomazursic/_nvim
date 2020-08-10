@@ -37,10 +37,9 @@
   },
   // Rust analyzer
   // "rust-analyzer.updates.channel": "nightly",
-
   // Snippets
   "snippets.ultisnips.enable": false,
-  "snippets.snipmate.enable": false,
+  "snippets.snipmate.enable": false
 
   // JS
   //"suggest.echodocSupport": true,
