@@ -2,32 +2,6 @@
 "   file: init.vim
 "
 "   Version: 1.2
-"
-"   === FIND HELP ===
-"   :help!
-"   :help 42
-"   :Ni!
-"   :help UserGettingBored
-"   :help help
-"   :help holy-grail
-"   :smile
-"
-"   === Cheat sheet ===
-"
-"   Global search and replace
-"
-"     1) Search for files contains pattern
-"         <leader>F
-"
-"     2) Inset pattern
-"        :File <search_pattern>
-"
-"     3) Select all matches
-"         Alt + a
-"
-"     4) Substitute
-"        :cfdo %s/foo/baz/g
-"
 "   ------------------------------------------------------------
 
 "{ LOAD PLUGINS
@@ -1017,4 +991,36 @@ nnoremap <leader>gw :Gwrite<CR><CR>
 "{ ABBREVIATIONS/SNIPPETS
 " Oh give me a brake insert me the right interpreter
 iabbrev !p #!/usr/bin/env python
+"}
+
+"{ CHEAT SHEET
+"
+"   == Find help ==
+
+"     :help!
+"     :help 42
+"     :Ni!
+"     :help UserGettingBored
+"     :help help
+"     :help holy-grail
+"
+"   == Global search and replace ==
+"
+"     1) Search for files contains pattern
+"         <leader>F
+"
+"     2) Inset pattern
+"        :File <search_pattern>
+"
+"     3) Select all matches
+"         Alt + a
+"
+"     4) Substitute
+"        :cfdo %s/foo/baz/g
+"
+"    == Sort and find duplicates ==
+"
+"    :s/:/\r/g    <--- split on : and add new line
+"    :sort
+"    :g/^\(.*\)$\n\1$/p  <--- form sorted lines highlight duplicates
 "}
