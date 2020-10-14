@@ -1,7 +1,7 @@
 "   ------------------------------------------------------------
 "   file: init.vim
 "
-"   Version: 1.2
+"   Version: 1.3
 "   ------------------------------------------------------------
 
 "{ LOAD PLUGINS
@@ -1039,4 +1039,9 @@ iabbrev !p #!/usr/bin/env python
 "    :s/:/\r/g    <--- split on : and add new line
 "    :sort
 "    :g/^\(.*\)$\n\1$/p  <--- form sorted lines highlight duplicates
+
+"    == Split all html tags onto their own lines ==
+"
+"    :s/<[^>]*>/\r&\r/g
+"    :g/^$/d
 "}
