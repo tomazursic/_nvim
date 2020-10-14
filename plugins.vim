@@ -44,7 +44,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'junegunn/goyo.vim'
 
 " Trailing whitespace highlighting & automatic fixing
-Plug 'ntpeters/vim-better-whitespace'
+" Plug 'ntpeters/vim-better-whitespace'
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
@@ -71,9 +71,12 @@ Plug 'fatih/vim-go'
 
 " === Testing Plugins === "
 Plug 'vim-test/vim-test'
+Plug 'alfredodeza/coveragepy.vim'
 
 " TOML syntax support
 Plug 'cespare/vim-toml'
+
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 " --- Disabled Plugins --- "
 
@@ -87,7 +90,8 @@ Plug 'cespare/vim-toml'
 " Plug 'Shougo/echodoc.vim'
 
 " Write different documentation styles
-" Plug 'kkoomen/vim-doge'
+Plug 'kkoomen/vim-doge'
+" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting

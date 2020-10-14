@@ -7,12 +7,12 @@
   "python.venvPath": "~/.virtualenvs",
   "python.venvFolders": ["envs", ".pyenv", "env"],
   // Python code formater
-  // python3 -m pip install black
+  // python3 -m pip install -U black
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
   "python.linting.pylintEnabled": false,
   // Python linting with flake8
-  // python3 -m pip install flake8
+  // python3 -m pip install -U flake8
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.local/bin/flake8",
   "python.linting.flake8Args": ["--ignore=E501,W601,W391"],

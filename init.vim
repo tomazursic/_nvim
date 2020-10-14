@@ -1008,6 +1008,22 @@ nnoremap <leader>gw :Gwrite<CR><CR>
 " nnoremap <leader>gps :Dispatch! git push<CR>
 " nnoremap <leader>gpl :Dispatch! git pull<CR>
 
+" ================ "
+" === vim-doge === "
+" ================ "
+let g:doge_doc_standard_python = 'numpy'
+let g:doge_python_settings = {
+\  'single_quotes': 0
+\}
+let g:doge_parsers = ['bash', 'python']
+
+" =============== "
+" === minimap === "
+" =============== "
+nnoremap <leader>mm :MinimapToggle<CR>
+hi MinimapCurrentLine ctermfg=Green guifg=#50FA7B guibg=#32302f
+let g:minimap_highlight = 'MinimapCurrentLine'
+
 " ============= "
 " === EMMET === "
 " ============= "
