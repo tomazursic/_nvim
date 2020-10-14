@@ -29,6 +29,12 @@ Older Ubuntu version < 20.04
     $ sudo apt install python3-neovim
     $ python3 -m pip install pynvim
 
+Install latest version
+
+Download `nvim.appimage` from https://github.com/neovim/neovim/releases
+
+    chmod +x nvim.appimage && sudo mv nvim.appimage /usr/local/bin/nvim
+
 Install neovim on OSX:
 
     $ brew update && brew install neovim
