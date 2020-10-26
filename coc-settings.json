@@ -5,7 +5,7 @@
   // jedi disabel and make use of MPLS
   "python.jediEnabled": false,
   "python.venvPath": "~/.virtualenvs",
-  "python.venvFolders": ["envs", ".pyenv", "env"],
+  "python.venvFolders": ["envs", ".pyenv", "env", ".venv"],
   // Python code formater
   // python3 -m pip install -U black
   "python.formatting.provider": "black",

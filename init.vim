@@ -991,13 +991,6 @@ let g:doge_python_settings = {
 \}
 let g:doge_parsers = ['bash', 'python']
 
-" =============== "
-" === minimap === "
-" =============== "
-nnoremap <leader>mm :MinimapToggle<CR>
-hi MinimapCurrentLine ctermfg=Green guifg=#50FA7B guibg=#32302f
-let g:minimap_highlight = 'MinimapCurrentLine'
-
 " ============= "
 " === EMMET === "
 " ============= "

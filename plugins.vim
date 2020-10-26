@@ -76,7 +76,8 @@ Plug 'alfredodeza/coveragepy.vim'
 " TOML syntax support
 Plug 'cespare/vim-toml'
 
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+" File overview of the code as a minimap sidebar
+" Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 " --- Disabled Plugins --- "
 
