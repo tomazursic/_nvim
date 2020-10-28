@@ -11,6 +11,8 @@
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
   "python.linting.pylintEnabled": false,
+  // Python linting with pylint
+  "python.linting.pylintPath": "~/.local/bin/pylint",
   // Python linting with flake8
   // python3 -m pip install -U flake8
   "python.linting.flake8Enabled": true,

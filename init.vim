@@ -670,7 +670,7 @@ let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 " Make FZF to use reipgrep
 if executable('rg')
   " Include gitignored files
-  let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore-vcs --hidden --follow --glob "!.git/*"'
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
   set grepprg=rg\ --vimgrep
 endif
 
@@ -818,6 +818,9 @@ nmap <leader>2 :CocCommand python.setInterpreter<CR>
 
 " Select python linter
 nmap <leader>3 :CocCommand python.setLinter<CR>
+
+" Show diganose
+nmap <leader>4 :CocList diagnostics<CR>
 
 " Handle filetype for jinja
 let g:coc_filetype_map = {
