@@ -50,6 +50,7 @@ Plug 'junegunn/goyo.vim'
 " Enable git changes to be shown in sign column
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " === UI === "
 " File explorer
