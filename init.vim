@@ -972,15 +972,15 @@ let test#strategy = "neovim"
 " === Git Fugitive === "
 " ==================== "
 " nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <c-g> :Gstatus<CR>
+nnoremap <c-g>c :Gcommit -v -q<CR>
+nnoremap <c-g>t :Gcommit -v -q %:p<CR>
 " nnoremap <leader>gd :Gdiff<CR>
 " nnoremap <leader>ge :Gedit<CR>
 " nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <leader>0l :silent! 0Glog<CR>
+nnoremap <c-g><c-g> :Gwrite<CR><CR>
+nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
+nnoremap <c-g>ll :silent! 0Glog<CR>
 " nnoremap <leader>gp :Ggrep<Space>
 " nnoremap <leader>gm :Gmove<Space>
 " nnoremap <leader>gb :Git branch<Space>
