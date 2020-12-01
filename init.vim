@@ -590,9 +590,6 @@ nmap <leader>, <C-^>
 nmap <leader>n :silent bnext<CR>
 nmap <leader>m :silent bprevious<CR>
 
-" new buffer from text
-map gf :e <cfile><CR>
-
 " Delete current buffer
 nmap <leader>q :bd<CR>
 
@@ -683,6 +680,8 @@ nmap <leader>f :Files<CR>
 nmap <leader>F :Find<space>
 " Find files inside git project
 nmap <leader>fg :GFiles<CR>
+" List changed files and diff
+nmap <leader>G :GF?<CR>
 " Find from history
 nmap <leader>: :History:<CR>
 nmap <leader>/ :History/<CR>
@@ -941,8 +940,6 @@ nmap <silent><leader>tl :TestLast<CR>
 nmap <silent><leader>tv :TestVisit<CR>
 nmap <leader>tt :call ToggleTestOnSave()<CR>
 
-let test#strategy = "neovim"
-
 " Toogle auto run tests on file save
 function! ToggleTestOnSave()
     if !exists('#TestOnSaveGroup#BufWrite')
@@ -965,6 +962,11 @@ endfunction
 if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
+
+" Django related settings - keep databse not recrete
+let test#python#djangotest#options = '--keepdb'
+
+let test#strategy = "neovim"
 
 " ==================== "
 " === Git Fugitive === "
