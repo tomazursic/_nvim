@@ -17,7 +17,9 @@
   // python3 -m pip install -U flake8
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.local/bin/flake8",
-  "python.linting.flake8Args": ["--ignore=E501,W601,W391"],
+  // Flake8 ignore these warnings:
+  // W503 line break before binary operator
+  "python.linting.flake8Args": ["--ignore=E501,W601,W391,W503"],
   // Python sort imports
   // python3 -m pip install isort
   //"python.sortImports.path": "~/.local/bin/isort",
