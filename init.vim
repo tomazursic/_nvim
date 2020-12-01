@@ -1043,4 +1043,15 @@ iabbrev !p #!/usr/bin/env python
 "
 "    :s/<[^>]*>/\r&\r/g
 "    :g/^$/d
+"    
+"    == Git workflow ==
+
+"    CTRl + g       Open status
+"    CTRl + n       Next file
+"    -              Toggle staged/unstaged
+"    cc             Makemake  commit
+"    
+"    CTRl + g + l   View commit history and navigate in quickfix window
+"    <space>        Toggle fold changes
+"    dq             Exit diff view
 "}
