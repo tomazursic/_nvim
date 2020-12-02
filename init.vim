@@ -401,6 +401,8 @@ map <leader>To :tabonly<CR>
 map <leader>Tc :tabclose<CR>
 map <A-m> :tabn<CR>
 map <A-n> :tabp<CR>
+map <A-b> :tabfirst<CR>
+map <A-v> :tablast<CR>
 
 " Clear search matches highlight on CTRL-l (line 30 not working correctly)
 nnoremap <silent><C-L> :nohlsearch<CR>
@@ -978,7 +980,7 @@ nnoremap <c-g>t :Gcommit -v -q %:p<CR>
 " nnoremap <leader>gd :Gdiff<CR>
 " nnoremap <leader>ge :Gedit<CR>
 " nnoremap <leader>gr :Gread<CR>
-nnoremap <c-g><c-g> :Gwrite<CR><CR>
+nnoremap <c-g>w :Gwrite<CR><CR>
 nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
 nnoremap <c-g>ll :silent! 0Glog<CR>
 " nnoremap <leader>gp :Ggrep<Space>
@@ -1050,6 +1052,7 @@ iabbrev !p #!/usr/bin/env python
 "    CTRl + n       Next file
 "    -              Toggle staged/unstaged
 "    cc             Makemake  commit
+"    SHIFT+d        View diff
 "    
 "    CTRl + g + l   View commit history and navigate in quickfix window
 "    <space>        Toggle fold changes
