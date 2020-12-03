@@ -880,7 +880,7 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
   " Enable extensions
-  let g:airline_extensions = ['branch', 'hunks', 'coc']
+  let g:airline_extensions = ['branch', 'hunks', 'coc', 'obsession']
 
   " Disable vim-airline in preview mode
   let g:airline_exclude_preview = 1

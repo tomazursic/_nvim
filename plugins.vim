@@ -43,6 +43,9 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 " Distraction-free writing
 Plug 'junegunn/goyo.vim'
 
+" Continuously updated session files - Session.vim
+Plug 'tpope/vim-obsession'
+
 " Trailing whitespace highlighting & automatic fixing
 " Plug 'ntpeters/vim-better-whitespace'
 
