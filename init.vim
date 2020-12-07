@@ -1007,7 +1007,7 @@ let g:doge_parsers = ['bash', 'python']
 
 "{ ABBREVIATIONS/SNIPPETS
 " Oh give me a brake insert me the right interpreter
-iabbrev !p #!/usr/bin/env python
+inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype)
 "}
 
 "{ CHEAT SHEET
