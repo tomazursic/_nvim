@@ -53,7 +53,8 @@ Plug 'tpope/vim-obsession'
 " Enable git changes to be shown in sign column
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
+" Plug 'junegunn/gv.vim'
+" Plug 'idanarye/vim-merginal'
 
 " === UI === "
 " File explorer
