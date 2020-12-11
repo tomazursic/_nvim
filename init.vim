@@ -552,9 +552,6 @@ nnoremap <leader>r :w<CR>:! python %<CR>
 " Insert below cursor the python debugger
 nnoremap <leader>pd oimport pdb; pdb.set_trace()<Esc>
 
-" Open floating documentation window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 " Fold text mappings
 nnoremap <space> za
 vnoremap <space> zf
@@ -778,7 +775,6 @@ let g:coc_global_extensions = [
             \'coc-emmet',
             \'coc-yaml',
             \'coc-json',
-            \'coc-git',
             \'coc-go'
             \]
 
@@ -820,7 +816,7 @@ nmap <leader>2 :CocCommand python.setInterpreter<CR>
 " Select python linter
 nmap <leader>3 :CocCommand python.setLinter<CR>
 
-" Show diganose
+" Show diganose (execute linter)
 nmap <leader>4 :CocList diagnostics<CR>
 
 " Handle filetype for jinja
@@ -846,10 +842,25 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
-endfunction
+endfunctio
+
+" Open floating documentation window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " == Coc Go ==
 " vim +GoInstallBinaries
@@ -862,16 +873,6 @@ let g:go_def_mapping_enabled = 0
 
 " Auto insert missing imports on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-
-" == Coc Snippets ==
-" " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-" let g:coc_snippet_next = '<c-j>'
-
-" " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-" let g:coc_snippet_prev = '<c-k>'
-
-" " Use <C-j> for both expand and jump (make expand higher priority.)
-" imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " ================ "
 " === AIRLINE ==== "
@@ -965,7 +966,7 @@ if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
 
-" Django related settings - keep databse not recrete
+" Django related settings - keep databse
 let test#python#djangotest#options = '--keepdb'
 
 let test#strategy = "neovim"
@@ -982,7 +983,8 @@ nnoremap <c-g>t :Gcommit -v -q %:p<CR>
 " nnoremap <leader>gr :Gread<CR>
 nnoremap <c-g>w :Gwrite<CR><CR>
 nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
-nnoremap <c-g>ll :silent! 0Glog<CR>
+" nnoremap <c-g>ll :silent! 0Glog<CR>
+" nnoremap <c-g>b :silent! Gblame<CR>
 " nnoremap <leader>gp :Ggrep<Space>
 " nnoremap <leader>gm :Gmove<Space>
 " nnoremap <leader>gb :Git branch<Space>
@@ -1002,7 +1004,7 @@ let g:doge_parsers = ['bash', 'python']
 " ============= "
 " === EMMET === "
 " ============= "
-" Default trigger with CTRL + y
+" Default trigger with CTRL + y + ,
 "}
 
 "{ ABBREVIATIONS/SNIPPETS
@@ -1020,6 +1022,9 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 "     :help UserGettingBored
 "     :help help
 "     :help holy-grail
+"
+"   Insert word under cursor into command
+"   :h CTRL+r CTRL+w
 "
 "   == Global search and replace ==
 "
