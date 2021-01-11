@@ -541,9 +541,11 @@ inoremap {<CR> {<CR>}<c-o><s-o>
 inoremap [<CR> [<CR>]<c-o><s-o>
 inoremap (<CR> (<CR>)<c-o><s-o>
 
-" Create jinja variable by hitting ,d
-nnoremap <leader>bb a{{  }}<Left><Left><Left>
-inoremap <leader>bb {{  }}<Left><Left><Left>
+" Create Django jinja variable by hitting ,d
+nnoremap <leader>bt a{{  }}<Left><Left><Left>
+inoremap <leader>bt {{  }}<Left><Left><Left>
+nnoremap <leader>bb a{%  %}<Left><Left><Left>
+inoremap <leader>bb {%  %}<Left><Left><Left>
 
 " comma then r, writes your current file, and runs python <name of file>, hit
 " enter again after script completes to drop back into vim
@@ -1062,4 +1064,11 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 "    CTRl + g + l   View commit history and navigate in quickfix window
 "    <space>        Toggle fold changes
 "    dq             Exit diff view
+"
+"    == Search Git commits (fzf)
+"    : Commits
+"        Ctrl + (k,j) navigate between commits
+"        Shift & Scroll the preview
+"    
+
 "}
