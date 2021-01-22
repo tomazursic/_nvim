@@ -69,7 +69,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " simple zoom window plugin
-Plug 'troydm/zoomwintab.vim'
+" Plug 'troydm/zoomwintab.vim'
 
 " === GO Plugins === "
 " https://github.com/fatih/vim-go/wiki/Tutorial#quick-setup

@@ -701,6 +701,9 @@ nmap <silent> <leader><Enter> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
+" Open buffers with preview
+nmap ;; :Buffers<CR>
+
 " == FZF FUNCTIONS ==
 " Files window with preview
 command! -bang -nargs=? -complete=dir Files
