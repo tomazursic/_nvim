@@ -552,7 +552,8 @@ inoremap <leader>bb {%  %}<Left><Left><Left>
 nnoremap <leader>r :w<CR>:! python %<CR>
 
 " Insert below cursor the python debugger
-nnoremap <leader>pd oimport pdb; pdb.set_trace()<Esc>
+nnoremap <leader>pdd oimport pdb; pdb.set_trace()<Esc>
+nnoremap <leader>pd oimport ipdb; ipdb.set_trace()<Esc>
 
 " Fold text mappings
 nnoremap <space> za

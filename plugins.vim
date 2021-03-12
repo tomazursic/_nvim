@@ -120,6 +120,8 @@ Plug 'kkoomen/vim-doge'
 " Improved syntax highlighting and indentation
 " Plug 'othree/yajs.vim'
 
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Initialize plugin system
 call plug#end()
