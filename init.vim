@@ -794,7 +794,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-nmap <silent> <leader>gd <Plug>(coc-definition)
+
+" nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<cr>
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
@@ -859,6 +861,7 @@ endfunctio
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
+" or use: set mouse=a
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -985,7 +988,7 @@ nnoremap <c-g> :Gstatus<CR>
 nnoremap <c-g>c :Gcommit -v -q<CR>
 nnoremap <c-g>t :Gcommit -v -q %:p<CR>
 " nnoremap <leader>gd :Gdiff<CR>
-" nnoremap <leader>ge :Gedit<CR>
+" nnoremap <leader>g :Gedit<CR>
 " nnoremap <leader>gr :Gread<CR>
 nnoremap <c-g>w :Gwrite<CR><CR>
 nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
