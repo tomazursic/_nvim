@@ -99,7 +99,7 @@ Plug 'cespare/vim-toml'
 " Plug 'Shougo/echodoc.vim'
 
 " Write different documentation styles
-Plug 'kkoomen/vim-doge'
+" Plug 'kkoomen/vim-doge'
 " Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 " === Javascript Plugins === "
