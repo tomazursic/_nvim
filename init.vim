@@ -359,6 +359,11 @@ augroup END
 augroup pythonsyntax
     au BufNewFile,BufRead *.py setlocal foldmethod=indent nofoldenable
 augroup END
+
+augroup rustsyntax
+    au BufNewFile,BufRead *.rs setlocal formatoptions-=cro
+augroup END
+
 "}
 
 "{ CUSTOM KEY MAPPINGS
@@ -547,10 +552,6 @@ inoremap <leader>bt {{  }}<Left><Left><Left>
 nnoremap <leader>bb a{%  %}<Left><Left><Left>
 inoremap <leader>bb {%  %}<Left><Left><Left>
 
-" comma then r, writes your current file, and runs python <name of file>, hit
-" enter again after script completes to drop back into vim
-nnoremap <leader>r :w<CR>:! python %<CR>
-
 " Insert below cursor the python debugger
 nnoremap <leader>pdd oimport pdb; pdb.set_trace()<Esc>
 nnoremap <leader>pd oimport ipdb; ipdb.set_trace()<Esc>
@@ -563,6 +564,11 @@ vnoremap <space> zf
 nmap <leader>8 :.!toilet -w 200 -f standard<CR>
 nmap <leader>9 :.!toilet -w 200 -f small<CR>
 nmap <leader>0 :.!toilet -w 200 -f term -F border<CR>
+
+" comma then r, writes your current file, and runs execute <name of file>, hit
+" enter again after script completes to drop back into vim
+autocmd FileType python nnoremap <leader>r :w<CR>:! python %<CR>
+autocmd FileType rust nnoremap <leader>r :w<CR>:RustRun<CR>
 "}
 
 "{ CLIPBOARD
@@ -588,9 +594,12 @@ set pastetoggle=<leader>x
 " Back and fort last two buffers
 nmap <leader>, <C-^>
 
+" Open buffers with preview
+nmap ;; :Buffers<CR>
+
 " To move between buffers
-nmap <leader>n :silent bnext<CR>
-nmap <leader>m :silent bprevious<CR>
+nmap <TAB> :silent bnext<CR>
+nmap <S-TAB> :silent bprevious<CR>
 
 " Delete current buffer
 nmap <leader>q :bd<CR>
@@ -676,6 +685,11 @@ endif
 " Close fzf preview
 tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
+" nnoremap <leader>f <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files <cr>
+" nnoremap <leader>F <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 " Find files
 nmap <leader>f :Files<CR>
 " Find inside files content
@@ -695,15 +709,12 @@ nnoremap <silent><leader>ff :Find <C-R>=expand("<cword>")<CR><CR>
 
 " h fzf-vim-commands (Buffers) support this
 " Bind to leader + <Enter> the buffer list
-nmap <silent> <leader><Enter> :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
-
-" Open buffers with preview
-nmap ;; :Buffers<CR>
+" nmap <silent> <leader><Enter> :call fzf#run({
+" \   'source':  reverse(<sid>buflist()),
+" \   'sink':    function('<sid>bufopen'),
+" \   'options': '+m',
+" \   'down':    len(<sid>buflist()) + 2
+" \ })<CR>
 
 " == FZF FUNCTIONS ==
 " Files window with preview
@@ -757,17 +768,17 @@ function! CreateCenteredFloatingWindow()
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
 
-" Show open buffers
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
+" " Show open buffers
+" function! s:buflist()
+"   redir => ls
+"   silent ls
+"   redir END
+"   return split(ls, '\n')
+" endfunction
 
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
+" function! s:bufopen(e)
+"   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+" endfunction
 
 " ================ "
 " === Coc.nvim === "
@@ -793,7 +804,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-
 
 " nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<cr>
@@ -987,7 +997,6 @@ let test#strategy = "neovim"
 nnoremap <c-g> :Gstatus<CR>
 nnoremap <c-g>c :Gcommit -v -q<CR>
 nnoremap <c-g>t :Gcommit -v -q %:p<CR>
-" nnoremap <leader>gd :Gdiff<CR>
 " nnoremap <leader>g :Gedit<CR>
 " nnoremap <leader>gr :Gread<CR>
 nnoremap <c-g>w :Gwrite<CR><CR>
@@ -1000,6 +1009,11 @@ nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
 " nnoremap <leader>go :Git checkout<Space>
 " nnoremap <leader>gps :Dispatch! git push<CR>
 " nnoremap <leader>gpl :Dispatch! git pull<CR>
+
+" Fugitive Conflict Resolution
+nnoremap <c-g>d :Gvdiff<CR>
+nnoremap <c-g>h :diffget //2<CR>
+nnoremap <c-g>l :diffget //3<CR>
 
 " ================ "
 " === vim-doge === "
@@ -1019,6 +1033,9 @@ let g:doge_parsers = ['bash', 'python']
 "{ ABBREVIATIONS/SNIPPETS
 " Oh give me a brake insert me the right interpreter
 inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype)
+" inoreabbrev <expr> dt1 "%Y-%m-%dT%H:%M:%SZ"
+" inoreabbrev <expr> dt2 "%Y-%m-%dT%H:%M:%S.000Z"
+" inoreabbrev <expr> dt3 "%Y-%m-%dT%H:%M:%S.%fZ"
 "}
 
 "{ CHEAT SHEET

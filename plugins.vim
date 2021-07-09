@@ -114,6 +114,8 @@ Plug 'cespare/vim-toml'
 
 " === Syntax Highlighting === "
 
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 " Syntax highlighting for javascript libraries
 " Plug 'othree/javascript-libraries-syntax.vim'
 

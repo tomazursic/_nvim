@@ -8,7 +8,7 @@ System dependences in use
 - ripgrep (use cargo)
 - node.js (required by coc)
 - bat (required by fzf preview)
-- isort (sorting imports with coc-python)
+- isort (sorting imports with coc-pyright)
 
 ## 1. Install Neovim
 
@@ -103,9 +103,12 @@ Check out `plugins.vim` file for more details
 
 ### Python
 
-https://github.com/neoclide/coc-python
+https://github.com/neoclide/coc-pyright
 
-    coc-python
+    coc-pyright
+
+mypy required
+    pip install django-stubs
 
 ### Rust
 

@@ -3,9 +3,9 @@
   // https://github.com/neoclide/coc-python
   // debug :CocCommand python.viewOutput
   // jedi disabel and make use of MPLS
-  "python.jediEnabled": false,
+  //"python.jediEnabled": false,
   "python.venvPath": "~/.virtualenvs",
-  "python.venvFolders": ["envs", ".pyenv", "env", ".venv"],
+  //"python.venvFolders": ["envs", ".pyenv", "env", ".venv"],
   // Python code formater
   // python3 -m pip install -U black
   "python.formatting.provider": "black",
