@@ -893,6 +893,9 @@ let g:go_def_mapping_enabled = 0
 " Auto insert missing imports on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
+" == Semshi ==
+let g:semshi#mark_selected_nodes = 0
+
 " ================ "
 " === AIRLINE ==== "
 " ================ "
@@ -994,19 +997,19 @@ let test#strategy = "neovim"
 " === Git Fugitive === "
 " ==================== "
 " nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <c-g> :Gstatus<CR>
+nnoremap <c-g> :Git<CR>
 nnoremap <c-g>c :Gcommit -v -q<CR>
 nnoremap <c-g>t :Gcommit -v -q %:p<CR>
 " nnoremap <leader>g :Gedit<CR>
 " nnoremap <leader>gr :Gread<CR>
 nnoremap <c-g>w :Gwrite<CR><CR>
-nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
-" nnoremap <c-g>ll :silent! 0Glog<CR>
-" nnoremap <c-g>b :silent! Gblame<CR>
+nnoremap <c-g>ll :silent! Glog<CR>:bot copen<CR>
+nnoremap <c-g>l :silent! 0Glog<CR>
+nnoremap <c-g>b :silent! Gblame<CR>
 " nnoremap <leader>gp :Ggrep<Space>
 " nnoremap <leader>gm :Gmove<Space>
 " nnoremap <leader>gb :Git branch<Space>
-" nnoremap <leader>go :Git checkout<Space>
+" nnoremap <c-g>o :Git checkout<Space>
 " nnoremap <leader>gps :Dispatch! git push<CR>
 " nnoremap <leader>gpl :Dispatch! git pull<CR>
 
@@ -1014,6 +1017,7 @@ nnoremap <c-g>l :silent! Glog<CR>:bot copen<CR>
 nnoremap <c-g>d :Gvdiff<CR>
 nnoremap <c-g>h :diffget //2<CR>
 nnoremap <c-g>l :diffget //3<CR>
+"Jump next [c to backward or ]c to search forward
 
 " ================ "
 " === vim-doge === "
